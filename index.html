@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Names Display | DevOps External</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-container">
+    <header class="site-header">
+      <div class="badge">Lab Project 14</div>
+      <span class="header-tag">Docker &amp; Jenkins CI/CD</span>
+    </header>
+
+    <main class="main-card">
+      <div class="card-header">
+        <div class="header-top">
+          <div class="pill-indicator">
+            <span class="status-dot"></span>
+            <span>Roster Database Active</span>
+          </div>
+          <div class="counter-badge">
+            Total Students: <strong id="student-count">5</strong>
+          </div>
+        </div>
+        <h1 id="page-title">Student Directory System</h1>
+        <p class="subtitle">Secure storage, retrieval, and display of enrolled student records for CI/CD demonstration.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card-content">
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+          <div class="search-wrapper">
+            <input 
+              type="text" 
+              id="student-search-input" 
+              class="input-search" 
+              placeholder="Search student by name or roll number..." 
+              oninput="handleSearch()"
+            >
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-outline" onclick="resetToFiveStudents()">Reset Default 5</button>
+            <button class="btn btn-primary" onclick="toggleAddModal()">+ Add Student</button>
+          </div>
+        </div>
+
+        <!-- Add Student Drawer/Card (Hidden by default) -->
+        <div id="add-student-panel" class="add-panel" style="display: none;">
+          <h3 class="panel-title">Add New Student</h3>
+          <div class="form-grid">
+            <input type="text" id="new-student-name" class="input-field" placeholder="Student Full Name (e.g. John Doe)">
+            <input type="text" id="new-student-roll" class="input-field" placeholder="Roll Number (e.g. DEV-2024-006)">
+            <input type="text" id="new-student-course" class="input-field" placeholder="Course (e.g. Cloud Computing)">
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary btn-sm" onclick="addNewStudent()">Save Student</button>
+            <button class="btn btn-outline btn-sm" onclick="toggleAddModal()">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Student Records Table -->
+        <div class="table-container">
+          <table class="student-table" id="student-table">
+            <thead>
+              <tr>
+                <th style="width: 60px;">#</th>
+                <th>Student Name</th>
+                <th>Roll No</th>
+                <th>Course</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="student-table-body">
+              <!-- Rendered via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pipeline Metadata Panel -->
+        <div class="meta-box">
+          <div class="meta-title">CI/CD Pipeline Specifications</div>
+          <div class="meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Container Engine</span>
+              <span class="meta-val">Docker (Alpine Nginx)</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Build Automation</span>
+              <span class="meta-val">Jenkins Declarative Pipeline</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Source Control</span>
+              <span class="meta-val">Git &amp; GitHub SCM</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Port Binding</span>
+              <span class="meta-val">Container 80 &rarr; Host 8081</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span>Question 14.a &amp; 14.b &bull; Docker Container &bull; Jenkins Pipeline</span>
+        <span class="monospace-tag" id="last-updated-tag">Source: In-Memory JS Array</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

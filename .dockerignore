@@ -1,0 +1,10 @@
+.git/
+.gitignore
+*.md
+Jenkinsfile
+students.py
+run_docker.bat
+run_docker.sh
+setup_git.bat
+__pycache__/
+*.pyc
